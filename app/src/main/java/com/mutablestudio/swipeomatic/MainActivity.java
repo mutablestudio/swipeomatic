@@ -32,13 +32,16 @@ public class MainActivity extends AppCompatActivity implements NavigationControl
 
     public void setContentFragment(Fragment fragment, boolean addToBackStack, String tag) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        if (tag=="HOME_FRAGMENT") {}
-//        else {
-        //ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-        //}
+        if (tag=="FRAGMENT_ONE") {}
+        else {
+            ft.setCustomAnimations(
+                    R.anim.enter_from_right,
+                    R.anim.exit_to_left,
+                    R.anim.enter_from_left,
+                    R.anim.exit_to_right);
+        }
         if (addToBackStack) ft.addToBackStack(tag);
         ft.add(R.id.fragmentContainer, fragment, tag);
-        //current fragment
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
         if (f!=null) ft.hide(f);
         ft.commit();
@@ -85,12 +88,10 @@ public class MainActivity extends AppCompatActivity implements NavigationControl
                 if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                     Log.i("MainActivity", "popping backstack");
                     getSupportFragmentManager().popBackStack();
+                } else {
+                    MainActivity.this.onBackPressed();
                 }
-//                else {
-//                    HomeActivity.this.onBackPressed();
-//                }
             }
-            Log.d(DEBUG_TAG, "onFling: " + velocityX);
             return true;
         }
     }
