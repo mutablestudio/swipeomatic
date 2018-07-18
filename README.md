@@ -5,8 +5,12 @@ This project mimicks the functionality of iOS where navigation can occur by swip
 1. If the app has floors and rooms, like a house, the floors are Activities and the rooms are Fragments. I prefer the use of Fragments over Avtivites due to greater stability I have seen over the course of developing many apps.
 2. Smooth fragment transitions are provided by res/anim X, Y delta translations
 3. A NavigationController interface handles callbacks from fragment UI and controls the logic to push new fragments
-4. Yes you could achieve this out of the box with a FragmentPagerAdapter, however you have to do a lot of extra work to handle navigation logic to load and remove fragments based on user interaction (multiple exits from a given room).
+4. A GestureDetector is used on the Activity to detect fling velocity
 
 
+Yes you could achieve this out of the box with a FragmentPagerAdapter, however you have to do a lot of extra work to handle navigation logic to load and remove fragments based on user interaction (multiple exits from a given room).
+
+# ToDo
+- support onScroll event and provide a preview of the back stack fragment (just like FragmentPagerAdapter!?) as the user scrolls or flings
 
 
